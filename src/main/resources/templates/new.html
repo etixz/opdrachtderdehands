@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="UTF-8">
+    <title>New Product</title>
+    <link rel="stylesheet" th:href="@{~/CSS.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <nav th:replace="~{menu::nav_menu(new)}"></nav>
+</head>
+<body>
+<div id="addProdHeader">
+<h1>Add new product</h1>
+</div>
+<div id="addProdForm">
+    <form th:action="@{~/new}" method="post" th:object="${nProduct}">
+        <label for="usernameCP">Username</label>
+        <br>
+        <input type="text" th:field="*{usernameCP}" id="usernameCP">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{usernameCP}" class="error"></span>
+        <br>
+        <label for="emailCP">Email</label>
+        <br>
+        <input type="text" th:field="*{emailCP}" id="emailCP" >
+        <span th:if="${#fields.hasErrors()}" th:errors="*{emailCP}" class="error"></span>
+        <br>
+        <label for="productnaam">Productname</label>
+        <br>
+        <input type="text" th:field="*{productnaam}" id="productnaam">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{productnaam}" class="error"></span>
+        <br>
+        <label for="vraagprijs">Price</label>
+        <br>
+        <input type="text" th:field="*{vraagPrijs}" id="vraagprijs">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{vraagPrijs}" class="error"></span>
+        <br>
+        <label for="omschrijving">Description</label>
+        <br>
+        <textarea row="20" cols="80" th:field="*{omschrijving}" type="text" id="omschrijving"></textarea>
+        <br>
+        <span th:if="${#fields.hasErrors()}" th:errors="*{omschrijving}" class="error"></span>
+        <br>
+
+            <button class="btn" th:field="submit" th:text="Add"></button>
+
+    </form>
+</div>
+<footer th:replace="~{footer::footer(new)}"></footer>
+
+</body>
+</html>
